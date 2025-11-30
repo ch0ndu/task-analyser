@@ -1,0 +1,165 @@
+:root{
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0ea5a4;
+  --success: #16a34a;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 10px;
+  --max-width: 1100px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:24px;
+}
+
+/* Topbar */
+.topbar{
+  max-width:var(--max-width);
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand h1{margin:0;font-size:20px}
+.subtitle{margin:0;color:var(--muted);font-size:12px}
+
+/* Grid */
+.main-grid{
+  max-width:var(--max-width);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 420px 1fr;
+  gap:18px;
+}
+
+/* Panels */
+.panel{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  padding:16px;
+  min-height:220px;
+}
+
+/* Inputs */
+.input-panel textarea{
+  width:100%;
+  min-height:210px;
+  font-family:var(--mono);
+  font-size:13px;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #e6eef3;
+  resize:vertical;
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  color:#0b1220;
+}
+
+.controls-row{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  align-items:center;
+}
+.controls-row label{font-size:13px;color:var(--muted)}
+.controls-row select{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid #e6eef3;
+  background:white;
+}
+
+/* Buttons */
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid rgba(2,6,23,0.06);
+  background:white;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn.primary{
+  background:linear-gradient(180deg,var(--accent),#049a99);
+  color:white;
+  border:0;
+  box-shadow:0 6px 12px rgba(13,30,34,0.06);
+}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+
+/* Results */
+.results-header{display:flex;align-items:center;justify-content:space-between}
+.loading{font-size:13px;color:var(--muted)}
+
+.results-list{ margin-top:10px; display:flex; flex-direction:column; gap:12px; min-height:120px; }
+
+.task-card{
+  display:flex;
+  gap:12px;
+  padding:10px;
+  border-radius:10px;
+  background:linear-gradient(180deg, #fff, #fbfdff);
+  border:1px solid rgba(11,17,32,0.04);
+  align-items:flex-start;
+}
+.task-meta{flex:1}
+.task-title{margin:0;font-size:16px;display:flex;gap:8px;align-items:center}
+.task-sub{margin:6px 0 0;color:var(--muted);font-size:13px}
+.score-badge{
+  min-width:92px;
+  text-align:center;
+  font-weight:700;
+  padding:8px 10px;
+  border-radius:8px;
+  color:white;
+}
+.score-high{background:linear-gradient(180deg,var(--danger),#d43b3b)}
+.score-mid{background:linear-gradient(180deg,var(--warn),#e29514)}
+.score-low{background:linear-gradient(180deg,var(--success),#14944b)}
+
+/* score bar */
+.scorebar{
+  height:8px;
+  background:#eef2f5;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:8px;
+}
+.scorebar > i{ display:block; height:100%; transition:width .4s ease }
+
+/* Explanation toggler */
+.explain{
+  margin-top:8px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:#0b1220;
+  background:linear-gradient(180deg,#fbfdff,#fff);
+  padding:8px;
+  border-radius:8px;
+  border:1px solid #eef6f9;
+}
+
+/* responsive */
+@media (max-width:980px){
+  .main-grid{ grid-template-columns: 1fr; padding-bottom:20px }
+  .topbar{ padding:0 12px }
+}
+
+/* small helpers */
+.muted{color:var(--muted)}
+.sample pre{font-family:var(--mono); font-size:12px; background:#0f172a10; padding:10px; border-radius:8px; overflow:auto}
+.footer{ max-width:var(--max-width); margin:18px auto 0; text-align:center; color:var(--muted); }
+.error{ color:var(--danger); margin-top:8px }

@@ -120,3 +120,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Full path to your frontend folder inside the project
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
+# Tell Django where to look for templates (index.html)
+TEMPLATES[0]["DIRS"] = [FRONTEND_DIR]
+
+# Serve static files (css/js) from the frontend folder in DEBUG
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [FRONTEND_DIR]
+

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Task Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    /* small fallback if static serving not configured */
+    @media (max-width:1px){ body { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Smart Task Analyzer</h1>
+      <p class="subtitle">Score • Prioritize • Decide</p>
+    </div>
+    <div class="meta">
+      <small>Local dev • no auth</small>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="panel input-panel">
+      <h2>Input</h2>
+      <p class="hint">Paste a JSON array of tasks (see sample). Each task: <code>{ id, title, due_date, estimated_hours, importance, dependencies }</code></p>
+
+      <textarea id="taskInput" placeholder='[{"id":"A","title":"Fix login","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]} ]'></textarea>
+
+      <div class="controls-row">
+        <label for="strategy">Strategy</label>
+        <select id="strategy">
+          <option value="smart">Smart Balance</option>
+          <option value="fast">Fastest Wins</option>
+          <option value="impact">High Impact</option>
+          <option value="deadline">Deadline Driven</option>
+        </select>
+
+        <button id="analyzeBtn" class="btn primary">Analyze</button>
+        <button id="suggestBtn" class="btn">Suggest (top 3)</button>
+      </div>
+
+      <div id="error" role="alert" class="error" aria-live="polite"></div>
+
+      <details class="sample">
+        <summary>Sample JSON (click to view)</summary>
+        <pre id="sampleJson">[
+  {"id":"A","title":"Fix login bug","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]},
+  {"id":"B","title":"Write tests","due_date":"2025-11-25","estimated_hours":2,"importance":6,"dependencies":["A"]},
+  {"id":"C","title":"Update docs","due_date":"2025-12-10","estimated_hours":1,"importance":4,"dependencies":[]},
+  {"id":"D","title":"Hotfix payment","due_date":"2025-11-20","estimated_hours":4,"importance":9,"dependencies":[]}
+]</pre>
+      </details>
+    </section>
+
+    <section class="panel results-panel">
+      <div class="results-header">
+        <h2>Results</h2>
+        <div id="loading" class="loading" hidden>Analyzing…</div>
+      </div>
+
+      <div id="results" class="results-list">
+        <p class="muted">No results yet — paste tasks and click Analyze.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Designed for the Technical Assessment • macOS/dev friendly</small>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
