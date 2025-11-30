@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2s9g1ai8@v)$350#vk*p$n3bq14#9spxf7dlpf_w5s2n*2##y#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -132,4 +132,14 @@ TEMPLATES[0]["DIRS"] = [FRONTEND_DIR]
 # Serve static files (css/js) from the frontend folder in DEBUG
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [FRONTEND_DIR]
+
+# For deployment: where collectstatic will place files
+from pathlib import Path
+
+# Ensure BASE_DIR is compatible with Path usage
+if not isinstance(BASE_DIR, Path):
+    BASE_DIR = Path(BASE_DIR)
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
