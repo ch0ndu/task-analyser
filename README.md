@@ -95,8 +95,9 @@ The scoring algorithm combines:
 
 ## 🔌 API Endpoints
 
-### **POST** `/api/tasks/analyze/`
-#### Request Body:
+### POST /api/tasks/analyze/
+
+Example Request:
 ```json
 [
   {
@@ -107,14 +108,22 @@ The scoring algorithm combines:
     "dependencies": []
   }
 ]
+```
+
 Response:
-Sorted tasks with calculated score
-Explanation for each task
-GET /api/tasks/suggest/
+- Sorted tasks with calculated score  
+- Explanation for each task  
+
+---
+
+### GET /api/tasks/suggest/
+
 Returns:
-Top 3 tasks
-Why they were selected
-Example:
+- Top 3 tasks  
+- Why they were selected  
+
+Example Response:
+```json
 [
   {
     "title": "Fix login bug",
@@ -122,36 +131,45 @@ Example:
     "reason": "High urgency and high importance"
   }
 ]
-⚙️ Installation & Setup (MacOS)
-1. Clone repo
+```
+
+---
+
+## ⚙️ Installation & Setup (MacOS)
+
+```
 git clone git@github.com:YOUR_USERNAME/task-analyzer.git
 cd task-analyzer
-2. Create virtual environment
+```
+
+### 2. Create virtual environment
+```bash
 python3 -m venv venv
 source venv/bin/activate
-3. Install dependencies
+```
+
+### 3. Install dependencies
+```bash
 pip install -r requirements.txt
-4. Run migrations
+```
+
+### 4. Run migrations
+```bash
 python manage.py migrate
-5. Start backend
+```
+
+### 5. Start server
+```bash
 python manage.py runserver
-6. Open frontend
-Visit:
+```
+
+### 6. Open in browser
 http://127.0.0.1:8000/
-🧪 Running Tests
+
+---
+
+## 🧪 Running Tests
+
+```bash
 python manage.py test
-Tests cover:
-Scoring logic
-API endpoints
-Dependency cycle detection
-📝 Design Decisions
-Django chosen for clean architecture and built-in ORM
-Custom scoring kept isolated in scoring.py for easy testing
-Frontend intentionally simple for clarity
-Algorithm designed for easy weight-tuning
-Circular dependency detection avoids infinite loops
-📦 Requirements
-Content of requirements.txt:
-Django>=4.0
-📄 License
-This project is created solely for assessment purposes.
+```
